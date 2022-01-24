@@ -1,0 +1,9 @@
+{
+  "name": "benjamesits.com.au_apa",
+  "version": "1.0.0",
+  "dependencies": {
+    "@notionhq/client": "^0.4.12",
+    "dotenv": "^14.2.0",
+    "googleapis": "^92.0.0"
+  }
+}
