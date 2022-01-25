@@ -3,9 +3,13 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 //const notion = require('./notion');
-const calendar = require('./google_calendar');
+const events = require('./events');
+const events1 = require('./events');
+const calendar = require('./google/calendar');
+const jwt_client = require('./google/jwt_client');
 
-calendar.init_calendar()
+
+calendar.init(jwt_client)
   .then(start_http_server);
 
 function start_http_server() {
@@ -16,9 +20,8 @@ function http_request_listener(request, result) {
   // TODO Allow functions based on input (i.e. get events pre-parsing or pre-duration_summing)
 
   calendar.get_events_from_week(new Date())
-    .then(calendar.parse_events)
-    .then(calendar.sum_group_durations)
-    .then(r => return_http_result(result, r))
+    .then(events.load_events)
+    .then(() => return_http_result(result, events.category_info))
     .catch(e => return_http_result(result, e));
 
   // notion.get_pages_from_week(process.env.NOTION_DATABASE_ID)
