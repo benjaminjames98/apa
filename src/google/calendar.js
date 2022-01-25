@@ -1,5 +1,5 @@
 const {google} = require('googleapis');
-const {first_day_of_week, first_day_of_next_week} = require('./../time_utils');
+const {first_day_of_week, first_day_of_next_week} = require('../time_utils');
 
 let calendar;
 let default_jwt_client;

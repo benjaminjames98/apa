@@ -2,7 +2,7 @@ const assert = require('assert');
 const expect = require('expect.js')
 
 const {raw_events, stored_events, category_info} = require('./events.test.data');
-const events = require('../events');
+const events = require('../src/events');
 events.load_events(raw_events);
 
 describe('Event Parsing Test', () => {
