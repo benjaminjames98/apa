@@ -5,5 +5,12 @@
     "@notionhq/client": "^0.4.12",
     "dotenv": "^14.2.0",
     "googleapis": "^92.0.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^9.2.0"
   }
 }

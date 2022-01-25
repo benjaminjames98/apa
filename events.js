@@ -73,6 +73,9 @@ module.exports = {
   load_events: load_events
 };
 
+Object.defineProperty(module.exports, "raw_events", {
+  get: () => raw_events
+});
 Object.defineProperty(module.exports, "stored_events", {
   get: () => stored_events
 });
