@@ -83,7 +83,10 @@ function get_event_category(colorId) {
 }
 
 function sum_group_durations(events) {
-  return events.reduce((obj, e) => {
+  let group_info = categories.reduce(
+    (s, c) => {return `${s} ${c['name']} - ${c['target_hours']} |`},
+    "|");
+  let groups = events.reduce((obj, e) => {
     if (!obj[e['category']]) obj[e['category']] = 0;
     obj[e['category']] += e['duration'];
     return obj;
