@@ -42,6 +42,24 @@ function get_events_from_week(date) {
   );
 }
 
+let categories = [{
+  name: "Antioch Initiative",
+  google_color_id: 3,
+  target_hours: 6
+}, {
+  name: "BJITS",
+  google_color_id: 10,
+  target_hours: 15
+}, {
+  name: "St David's",
+  google_color_id: 6,
+  target_hours: 11
+}, {
+  name: "Study",
+  google_color_id: 11,
+  target_hours: 8
+}];
+
 function parse_events(events) {
   events = events.filter(e => e["start"]['dateTime']);
   return events.map(e => {
@@ -58,12 +76,10 @@ function parse_events(events) {
 }
 
 function get_event_category(colorId) {
-  if (colorId === '3') return "Antioch Initiative";
-  if (colorId === '6') return "St David's";
-  if (colorId === '10') return "BJITS";
-  if (colorId === '11') return "Study";
-
-  return 'uncategorised';
+  let category = categories.find(
+    cat => cat['google_color_id'].toString() === colorId.toString()
+  );
+  return category ? category['name'] : 'uncategorised';
 }
 
 function sum_group_durations(events) {
@@ -72,6 +88,7 @@ function sum_group_durations(events) {
     obj[e['category']] += e['duration'];
     return obj;
   }, {});
+  return {group_info, groups};
 }
 
 module.exports = {

@@ -13,6 +13,7 @@ function start_http_server() {
 }
 
 function http_request_listener(request, result) {
+  // TODO Allow functions based on input (i.e. get events pre-parsing or pre-duration_summing)
 
   calendar.get_events_from_week(new Date())
     .then(calendar.parse_events)
