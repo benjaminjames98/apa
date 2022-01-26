@@ -5,7 +5,8 @@
       <paths name="benjamesits.com.au">
         <serverdata>
           <mappings>
-            <mapping deploy="/node" local="$PROJECT_DIR$" web="/node" />
+            <mapping deploy="/public_html/apa" local="$PROJECT_DIR$/apa" web="/apa" />
+            <mapping deploy="/node" local="$PROJECT_DIR$/node" web="/node" />
           </mappings>
         </serverdata>
       </paths>
