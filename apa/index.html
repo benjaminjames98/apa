@@ -6,5 +6,15 @@
 </head>
 <body>
 
+Hi
+
+<div id="text_div"></div>
+
+<script defer>
+  fetch('https://benjamesits.com.au/node/')
+    .then(r => r.json())
+    .then(r => document.getElementById('text_div').innerText = r);
+</script>
+
 </body>
 </html>
