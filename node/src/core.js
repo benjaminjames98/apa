@@ -1,6 +1,8 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
+// TODO add ability to sum hours worked on an invoice
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
