@@ -14,7 +14,7 @@ const calendar = require('./google/calendar');
 const jwt_client = require('./google/jwt_client');
 
 app.get('/node/', (request, result) => {
-  calendar.get_events_from_week(new Date())
+  calendar.get_events_from_this_week()
     .then(events.load_events)
     .then(() => result.json(events.category_info))
     .catch(e => result.json(e));
