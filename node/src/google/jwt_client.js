@@ -8,6 +8,6 @@ let jwt_client = new google.auth.JWT(
   ['https://www.googleapis.com/auth/calendar']
 );
 
-module.exports ={
-  client: jwt_client,
-}
+Object.defineProperty(module.exports, "client", {
+  get: () => jwt_client
+});
