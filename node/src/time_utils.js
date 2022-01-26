@@ -11,7 +11,4 @@ function hours_between(start, end) {
   return (end - start) / (1000 * 60 * 60);
 }
 
-module.exports = {
-  first_day_of_week: first_day_of_week,
-  hours_between: hours_between
-};
+module.exports = {first_day_of_week, hours_between};

@@ -69,9 +69,7 @@ function get_category_info(events) {
   return category_info;
 }
 
-module.exports = {
-  load_events: load_events
-};
+module.exports = {load_events};
 
 Object.defineProperty(module.exports, "raw_events", {
   get: () => raw_events

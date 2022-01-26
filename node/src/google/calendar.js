@@ -34,8 +34,4 @@ function get_events_between(min, max, jwt_client = default_jwt_client) {
   );
 }
 
-module.exports = {
-  init: init,
-  get_events_from_this_week,
-  get_events_between
-};
+module.exports = {init, get_events_from_this_week, get_events_between};

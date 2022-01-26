@@ -12,17 +12,15 @@ async function get_pages_from_week() {
       or: [
         {
           property: 'Date',
-          date: {on_or_before: "2022-01-23"},
+          date: {on_or_before: "2022-01-23"}
         },
         {
           property: 'Date',
-          date: {on_or_before: "2022-01-29"},
-        },
-      ],
-    },
+          date: {on_or_before: "2022-01-29"}
+        }
+      ]
+    }
   });
 }
 
-module.exports = {
-  get_pages_from_week: get_pages_from_week,
-};
+module.exports = {get_pages_from_week};
