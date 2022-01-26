@@ -8,16 +8,23 @@ const port = 8080;
 app.use(cors());
 
 //const notion = require('./notion');
-const events = require('./events');
-const events1 = require('./events');
+const event_generator = require('./events');
+const events = [
+  event_generator(),
+  event_generator(),
+  event_generator(),
+  event_generator()
+];
 const calendar = require('./google/calendar');
 const jwt_client = require('./google/jwt_client');
 
-app.get('/node/', (request, result) => {
-  calendar.get_events_from_this_week()
-    .then(events.load_events)
-    .then(() => result.json(events.category_info))
-    .catch(e => result.json(e));
+app.get('/node/', async (request, result) => {
+  events[0].load_events(await calendar.get_events_from_week(0));
+  events[1].load_events(await calendar.get_events_from_week(1));
+  events[2].load_events(await calendar.get_events_from_week(2));
+  events[3].load_events(await calendar.get_events_from_week(3));
+
+  result.json(events.map(e => e.category_info));
 });
 
 calendar.init(jwt_client)
