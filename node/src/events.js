@@ -1,7 +1,7 @@
 let categories = [{
   name: "Antioch Initiative",
   google_color_id: 3,
-  target_hours: 6
+  target_hours: 5
 }, {
   name: "BJITS",
   google_color_id: 10,
@@ -9,7 +9,7 @@ let categories = [{
 }, {
   name: "St David's",
   google_color_id: 6,
-  target_hours: 11
+  target_hours: 12
 }, {
   name: "Study",
   google_color_id: 11,
