@@ -37,10 +37,7 @@ function get_events_between(min, max, jwt_client = default_jwt_client) {
         timeMax: max.toISOString(),
         orderBy: "startTime"
       }, (err, res) => {
-        if (err) {
-          reject(err);
-        }
-
+        if (err) reject(err);
         resolve(res.data.items);
       });
     }
