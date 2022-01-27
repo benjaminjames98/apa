@@ -11,22 +11,25 @@ app.use(cors());
 
 //const notion = require('./notion');
 const event_generator = require('./events');
-const events = [
-  event_generator(),
-  event_generator(),
-  event_generator(),
-  event_generator()
-];
 const calendar = require('./google/calendar');
 const jwt_client = require('./google/jwt_client');
 
 app.get('/node/', async (request, result) => {
-  events[0].load_events(await calendar.get_events_from_week(0));
-  events[1].load_events(await calendar.get_events_from_week(1));
-  events[2].load_events(await calendar.get_events_from_week(2));
-  events[3].load_events(await calendar.get_events_from_week(3));
+  let promises = [];
+  for (let i = 0; i < 3; i++) {
+    let promise = new Promise(async resolve => {
+      let events = event_generator();
+      events.load_events(await calendar.get_events_from_week(i));
+      resolve(events.category_info);
+    });
+    promises.push(promise);
+  }
 
-  result.json(events.map(e => e.category_info));
+  let res = [];
+  for (let category_info of promises)
+    res.push(await category_info);
+
+  result.json(res);
 });
 
 calendar.init(jwt_client)
